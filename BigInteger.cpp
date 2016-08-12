@@ -138,10 +138,8 @@ std::string BigInteger::multiplyStr(std::string A, std::string B) {
 	std::string res = "0";
 	std::string counter = B;
 	while (!(counter.compare("0") == 0)) {
-		printf("counter:%s\n", counter.c_str());
 		res = BigInteger::addStr(res, A);
 		counter = BigInteger::subtractStr(counter, "1");
-		printf("result:%s\n", res.c_str());
 	}
 	return res;
 }
@@ -155,6 +153,33 @@ std::string BigInteger::powStr(std::string A, std::string B) {
 	}
 	return res;
 }
+
+std::string BigInteger::factorialStr(std::string n) {
+	std::string res = "1";
+	std::string count = n;
+	while (!(count.compare("0") == 0)) {
+		res = BigInteger::multiplyStr(res, count);
+		count = BigInteger::subtractStr(count, "1");
+	}
+	return res;
+}
+
+std::string BigInteger::fibonacciStr(std::string n) {
+	if (n.compare("0") == 0)
+		return "0";
+	else {
+		std::string x = "0";
+		std::string y = "1";
+		std::string count = BigInteger::subtractStr(n, "1");
+		while (!(count.compare("0") == 0)) {
+			std::string z = BigInteger::addStr(x,y);
+			x = y;
+			y = z;
+			count = BigInteger::subtractStr(count, "1");
+		}
+		return y;
+	}
+}
 	
 BigInteger* BigInteger::add(BigInteger* A, BigInteger* B) {
 	std::string new_num = BigInteger::addStr(A->num, B->num);
@@ -166,13 +191,11 @@ BigInteger* BigInteger::subtract(BigInteger* A, BigInteger* B) {
 	std::string new_num = BigInteger::subtractStr(A->num, B->num);
 	return new BigInteger(new_num);	
 }
-
-BigInteger* BigInteger::multiply(BigInteger* A, BigInteger* B) {
 	
-	
-	
+BigInteger* BigInteger::multiply(BigInteger* A, BigInteger* B) {	
+	std::string new_num = BigInteger::multiplyStr(A->num, B->num);
+	return new BigInteger(new_num);
 }
-
 
 bool BigInteger::isStrNum(std::string str) {
 	for (int i = 0; i < str.size(); i++) {
