@@ -119,6 +119,7 @@ int main(int argc, char** argv) {
 	A.push_back("20849603980134001723930671666823555245252804609722");
 	A.push_back("53503534226472524250874054075591789781264330331690");
 	string sum = vectorSum(A);
+	cout << "sum: " << sum << endl;
 	cout << "first 10 digits: " << sum.substr(0,10) << endl;
 
 	return 0;

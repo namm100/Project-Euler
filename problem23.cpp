@@ -37,6 +37,9 @@ bool isPerfect(int num) {
 	return num == d(num);
 }
 
+void checkNum(int max) {
+	for (int i = 0; i < 
+}
 int main(int argc, char** argv) {
 	
 	for (int i = 1; i < 51; i++) {
